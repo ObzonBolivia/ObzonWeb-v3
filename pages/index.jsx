@@ -280,7 +280,7 @@ function Home() {
           : <button onClick={handlerPDF} className={style.pluss} >pdf</button>}
 
         {success == 'NonExist' && <Error>ERROR: codigo no existente</Error>}
-
+            
         {success == 'InUse' && <Error>ERROR: codigo en uso</Error>}
 
         {success == 'Premium' && <Success>Felicidades, ERES PREMIUM !!</Success>}
