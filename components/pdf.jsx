@@ -112,11 +112,12 @@ const PDFView = ({ img, dbUrl, style }) => {
         } else {
             console.log('no es una webview')
             
-            writeUserData(`/usersCollage/${user.uid}`, { dataUrl }, null)
+            // writeUserData(`/usersCollage/${user.uid}`, { dataUrl }, null)
 
-            Object.keys(image).map(i => {
-                image[i].file && uploadIMG(`/usersCollage/${user.uid}/image/${i}/`, i, image[i].file, image[i])
-            })
+            // Object.keys(image).map(i => {
+            //     image[i].file && uploadIMG(`/usersCollage/${user.uid}/image/${i}/`, i, image[i].file, image[i])
+            // })
+            writeUserData(`/usersCollage/${user.uid}`, { image, dataUrl }, null)
             // writeUserData(`/usersCollage/${user.uid}`, { image, dataUrl }, null)
         }
     }
