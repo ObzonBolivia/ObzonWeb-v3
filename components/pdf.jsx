@@ -108,7 +108,7 @@ const PDFView = ({ img, dbUrl, style }) => {
 
         if (isWebview()) {
             router.pathname !== '/DownloaderPDF' && window.open(`https://obzonbolivia.com/DownloaderPDF?uid=${user.uid}`, '_system')
-            writeUserData(`/usersCollage/${user.uid}`, { image, dataUrl }, null)
+            // writeUserData(`/usersCollage/${user.uid}`, { image, dataUrl }, null)
         } else {
             console.log('no es una webview')
             

@@ -92,12 +92,11 @@ function getData(setUserData) {
 }
 
 function getImageData(rute, setUserData) {
-  console.log(uid)
 
-  onValue(ref(db, `usersCollage/${uid}`), (snapshot) => {
+  onValue(ref(db, rute), (snapshot) => {
     
     if (snapshot.exists()) {
-      snapshot.val().image != undefined && setUserData(snapshot.val());
+      snapshot.val() != undefined && setUserData(snapshot.val());
       // snapshot.val().dataUrl != undefined && setQr(snapshot.val().dataUrl)
     }
   });
