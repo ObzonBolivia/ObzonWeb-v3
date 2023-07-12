@@ -102,6 +102,21 @@ function getImageData(rute, setUserData) {
   });
 }
 
+
+
+function getImageAndQRData(uid, setUserImage, setQr) {
+
+  console.log(uid)
+
+  onValue(ref(db, `usersCollage/${uid}`), (snapshot) => {
+    console.log(snapshot.val())
+    if (snapshot.exists()) {
+      snapshot.val().image != undefined && setUserImage(snapshot.val().image);
+      // snapshot.val().dataUrl != undefined && setQr(snapshot.val().dataUrl)
+    }
+  });
+}
+
 function getSpecificData(query, setUserSpecificData) {
 
   get(child(dbRef, `users/${query}`)).then((snapshot) => {
@@ -150,4 +165,4 @@ function getCode(code, uid, setUserSuccess) {
   })
 }
 
-export { onAuth, signUpWithEmail, handleSignOut, getData, getSpecificData, writeUserData, removeData, getCode, signInWithEmail, getImageData }
+export { onAuth, signUpWithEmail, handleSignOut, getData, getSpecificData, writeUserData, removeData, getCode, signInWithEmail, getImageData, getImageAndQRData }

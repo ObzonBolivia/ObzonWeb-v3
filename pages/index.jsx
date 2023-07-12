@@ -1,5 +1,5 @@
 
-import { getCode, getImageData } from '../firebase/utils'
+import { getCode, getImageAndQRData } from '../firebase/utils'
 
 import { useEffect, useState, useRef } from 'react'
 
@@ -140,7 +140,7 @@ function Home() {
 
 
   useEffect(() => {
-    Object.keys(image).length == 0 && getImageData(user.uid, setAlbunImage, setQr)
+    Object.keys(image).length == 0 && getImageAndQRData(user.uid, setAlbunImage, setQr)
     document.getElementById('qr') && setDataUrl(document.getElementById('qr').toDataURL())
   }, [user, qr]);
 
