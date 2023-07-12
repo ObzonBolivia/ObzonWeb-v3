@@ -91,13 +91,13 @@ function getData(setUserData) {
   });
 }
 
-function getImageData(uid, setUserImage, setQr) {
+function getImageData(rute, setUserData) {
   console.log(uid)
 
   onValue(ref(db, `usersCollage/${uid}`), (snapshot) => {
     
     if (snapshot.exists()) {
-      snapshot.val().image != undefined && setUserImage(snapshot.val().image);
+      snapshot.val().image != undefined && setUserData(snapshot.val());
       // snapshot.val().dataUrl != undefined && setQr(snapshot.val().dataUrl)
     }
   });
