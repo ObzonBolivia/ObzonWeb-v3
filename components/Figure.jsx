@@ -39,13 +39,13 @@ export default function Figure({ stylesProp, num, rotate, index }) {
 
         const file = e.target.files[0]
 
-        var reader = new FileReader();
+        // var reader = new FileReader();
 
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-            console.log(reader.result)
-            setAlbunImage({ ...image, [fileName]: { ...image[fileName], file, url: reader.result, rotate: 0, position: 'center' } })
-        };
+        // reader.readAsDataURL(file);
+        // reader.onload = function () {
+            // console.log(reader.result)
+            setAlbunImage({ ...image, [fileName]: { ...image[fileName], file, url: file.toDataURL('image/jpeg'), rotate: 0, position: 'center' } })
+        // };
 
         // setAlbunImage({ ...image, [fileName]: { ...image[fileName], file, url: URL.createObjectURL(file), rotate: 0, position: 'center' } })
 
