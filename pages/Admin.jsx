@@ -27,6 +27,8 @@ function Admin() {
   const [funcion, setIFuncion] = useState(null)
 
   const [item, setItem] = useState(null)
+  const [filter, setFilter] = useState('')
+
   const [templates, setTemplates] = useState({
     template1: [
       'h', 'h', 'h',
@@ -101,6 +103,7 @@ function Admin() {
   }
 
   function remove() {
+    setMode(null)
     removeData(`/users/${item}`, setUserData, setUserSuccess, 'ELIMINADO')
   }
 
@@ -118,7 +121,9 @@ function Admin() {
     }
     writeUserData(`/users/${item}`, obj, setUserSuccess, 'ROL QUITADO')
   }
-
+  function handlerOnchangeFilter (e) {
+    setFilter(e.target.value)
+  }
   function removeQR() {
     setQr(!qr)
   }
@@ -139,10 +144,12 @@ function Admin() {
       <div className={style.container}>
 
         <h3 className={style.subtitle}> Administrar Usuarios</h3>
+        <input type="text" className={style.filter} onChange={handlerOnchangeFilter} placeholder='Filtrar'/>
+        <br />
         {userDB.users &&
           <div>
             {Object.keys(userDB.users).map((i, index) => {
-              return <div className={style.users}>
+              return userDB.users[i].email.includes(filter) && <div className={style.users}>
                 <span>{userDB.users[i].email !== undefined ? userDB.users[i].email : userDB.users[i].displayName}</span>
                 <span className={userDB.users[i].uid ? style.green : style.red}>{userDB.users[i].uid ? 'Active' : 'No Active'}</span>
                 <Button style='buttonSecondary' click={() => handlerFunction('activar', i)}>Activar</Button>
